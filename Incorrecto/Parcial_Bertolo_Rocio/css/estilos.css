@@ -1,0 +1,150 @@
+:root {
+    --fondo: #f3f5f8;
+    --texto: #263238;
+    --texto-secundario: #607d8b;
+    --blanco: #ffffff;
+    --primario: #3f51b5;
+    --primario-oscuro: #303f9f;
+    --borde: #cfd8dc;
+    --error: #b71c1c;
+    --error-fondo: #ffebee;
+    --celeste: #d9f2ff;
+    --celeste-borde: #4aa3c7;
+    --rosa: #ffe0ec;
+    --rosa-borde: #d76b98;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--texto);
+    background: var(--fondo);
+}
+
+.contenedor {
+    width: min(92%, 680px);
+    margin: 0 auto;
+    padding: 56px 0;
+}
+
+.tarjeta {
+    padding: 32px;
+    background: var(--blanco);
+    border-radius: 18px;
+    box-shadow: 0 14px 40px rgba(38, 50, 56, 0.12);
+}
+
+.etiqueta {
+    margin: 0 0 8px;
+    color: var(--primario);
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin: 0 0 8px;
+}
+
+.introduccion {
+    margin: 0 0 28px;
+    color: var(--texto-secundario);
+}
+
+.campo {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+input,
+select,
+button {
+    width: 100%;
+    min-height: 46px;
+    border-radius: 9px;
+    font: inherit;
+}
+
+input,
+select {
+    padding: 0 12px;
+    color: var(--texto);
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+}
+
+input:focus,
+select:focus {
+    outline: 3px solid rgba(63, 81, 181, 0.18);
+    border-color: var(--primario);
+}
+
+button {
+    margin-top: 6px;
+    color: var(--blanco);
+    font-weight: bold;
+    background: var(--primario);
+    border: 0;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--primario-oscuro);
+}
+
+.resultado {
+    margin-top: 24px;
+    padding: 18px;
+    border: 2px solid var(--borde);
+    border-radius: 12px;
+}
+
+.resultado h2 {
+    margin: 0 0 8px;
+    font-size: 1rem;
+}
+
+.resultado p {
+    margin: 0;
+}
+
+.oculto {
+    display: none;
+}
+
+.celeste {
+    background: var(--celeste);
+    border-color: var(--celeste-borde);
+}
+
+.rosa {
+    background: var(--rosa);
+    border-color: var(--rosa-borde);
+}
+
+.error {
+    color: var(--error);
+    background: var(--error-fondo);
+    border-color: var(--error);
+}
+
+@media (max-width: 520px) {
+    .contenedor {
+        padding: 24px 0;
+    }
+
+    .tarjeta {
+        padding: 22px;
+    }
+}
