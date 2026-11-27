@@ -24,26 +24,31 @@ botonGenerar.addEventListener("click", function () {
     resultadoDiv.classList.remove("oculto", "error", "celeste", "rosa");
 
     // Validar los datos
-    if (nombreUsuario === "") {
-        mensajeResultado.textContent = "Ingresá tu nombre y apellido.";
-        resultadoDiv.classList.add("error");
-        return;
+    let hayErrores = false;
 
-    } else if (dniTexto === "") {
-        mensajeResultado.textContent = "Ingresá tu DNI.";
-        resultadoDiv.classList.add("error");
-        return;
+if (nombreUsuario === "") {
+    mensajeResultado.textContent = "Ingresá tu nombre y apellido.";
+    hayErrores = true;
+}
 
-    } else if (dniTexto.length !== 8) {
-        mensajeResultado.textContent = "El DNI debe tener exactamente 8 números.";
-        resultadoDiv.classList.add("error");
-        return;
+if (dniTexto === "") {
+    mensajeResultado.textContent += " Ingresá tu DNI.";
+    hayErrores = true;
 
-    } else if (generoUsuario === "") {
-        mensajeResultado.textContent = "Seleccioná una opción de género.";
-        resultadoDiv.classList.add("error");
-        return;
-    }
+} else if (dniTexto.length !== 8) {
+    mensajeResultado.textContent += " El DNI debe tener exactamente 8 números.";
+    hayErrores = true;
+}
+
+if (generoUsuario === "") {
+    mensajeResultado.textContent += " Seleccioná una opción de género.";
+    hayErrores = true;
+}
+
+if (hayErrores) {
+    resultadoDiv.classList.add("error");
+    return;
+}
 
     // Generar el CUIL
     const dniUsuario = Number(dniTexto);
