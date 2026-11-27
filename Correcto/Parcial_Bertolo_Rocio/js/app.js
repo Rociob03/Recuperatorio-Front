@@ -11,38 +11,56 @@ const resultadoDiv = document.querySelector("#resultado");
 const mensajeResultado = document.querySelector("#mensaje-resultado");
 
 
-// 2. Agregar funcionalidad al boton, validar datos
+// 2. Agregar funcionalidad al botón y validar datos
 
 botonGenerar.addEventListener("click", function () {
 
-    //Obtener los datos 
+    // Obtener los datos
     const nombreUsuario = inputNombre.value.trim();
     const dniTexto = inputDni.value;
     const generoUsuario = inputGenero.value;
-    
-    //Clases ocultas  
-    resultadoDiv.classList.remove("oculto", "error","celeste", "rosa");
 
-    //Validar los datos 
-    if (nombreUsuario === "" || dniTexto.length !== 8 || generoUsuario === "") {
-    mensajeResultado.textContent = "Completá correctamente todos los campos.";
-    resultadoDiv.classList.add("error");
-    return;
-}
+     //Clases ocultas 
+    resultadoDiv.classList.remove("oculto", "error", "celeste", "rosa");
+
+    // Validar los datos
+    if (nombreUsuario === "") {
+        mensajeResultado.textContent = "Ingresá tu nombre y apellido.";
+        resultadoDiv.classList.add("error");
+        return;
+
+    } else if (dniTexto === "") {
+        mensajeResultado.textContent = "Ingresá tu DNI.";
+        resultadoDiv.classList.add("error");
+        return;
+
+    } else if (dniTexto.length !== 8) {
+        mensajeResultado.textContent = "El DNI debe tener exactamente 8 números.";
+        resultadoDiv.classList.add("error");
+        return;
+
+    } else if (generoUsuario === "") {
+        mensajeResultado.textContent = "Seleccioná una opción de género.";
+        resultadoDiv.classList.add("error");
+        return;
+    }
+
     // Generar el CUIL
     const dniUsuario = Number(dniTexto);
     const cuilUsuario = devolverCuil(generoUsuario, dniUsuario);
 
     // Mostrar el resultado
-     mensajeResultado.textContent = `${nombreUsuario}, tu CUIL es ${cuilUsuario}.`;
-   
-    if (generoUsuario === "hombre"){
+    mensajeResultado.textContent = `${nombreUsuario}, tu CUIL es ${cuilUsuario}.`;
+
+    // Agregar color según el género
+    if (generoUsuario === "hombre") {
         resultadoDiv.classList.add("celeste");
     } else {
         resultadoDiv.classList.add("rosa");
     }
 
 });
+
 
 // 3. Hacer una funcion que devuelva CUIL
 
@@ -60,4 +78,4 @@ function devolverCuil (genero, dni){
 
     } 
     return cuilResultante;
-}s
+}
