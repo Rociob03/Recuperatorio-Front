@@ -19,7 +19,10 @@ botonGenerar.addEventListener("click", function () {
     const nombreUsuario = inputNombre.value.trim();
     const dniTexto = inputDni.value;
     const generoUsuario = inputGenero.value;
-
+    
+    // Limpiar mensajes anteriores
+    mensajeResultado.textContent = "";
+    
      //Clases ocultas 
     resultadoDiv.classList.remove("oculto", "error", "celeste", "rosa");
 
@@ -27,7 +30,7 @@ botonGenerar.addEventListener("click", function () {
     let hayErrores = false;
 
 if (nombreUsuario === "") {
-    mensajeResultado.textContent = "Ingresá tu nombre y apellido.";
+    mensajeResultado.textContent += "Ingresá tu nombre y apellido.";
     hayErrores = true;
 }
 
